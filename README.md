@@ -1,2 +1,4 @@
 # APIs
-AI API
+TogetherAI API
+OpenAI API
+AnthropicAI API
