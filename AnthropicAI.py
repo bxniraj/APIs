@@ -1,22 +1,15 @@
 from anthropic import Anthropic
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 import os
 import re
 
-load_dotenv(os.getenv("ENV_FILE", ".env"))
-
 app = FastAPI()
 
 client = Anthropic(api_key=os.environ["ANTHROPICAI_API_KEY"])
-
-# claude-3-opus-20240229
-
 class Prompt(BaseModel):
     prompt: str
-    model: str
 
 
 @app.post("/response")
@@ -31,7 +24,7 @@ def get_response(prompt: Prompt):
 
   def query_anthropicai(prompt_text):
       response = client.messages.create(
-          model=prompt.model,
+          model="claude-3-opus-20240229",
           max_tokens=1024,
           messages=[
               {"role": "user", "content": prompt_text},

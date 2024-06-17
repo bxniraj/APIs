@@ -1,12 +1,9 @@
 from openai import OpenAI
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 import re
 import os
-
-load_dotenv(os.getenv("ENV_FILE", ".env"))
 
 app = FastAPI()
 

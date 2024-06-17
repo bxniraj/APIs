@@ -1,12 +1,9 @@
-from dotenv import load_dotenv
 from openai import OpenAI
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 import re
 import os
-
-load_dotenv(os.getenv("ENV_FILE", ".env"))
 
 app = FastAPI()
 
@@ -15,11 +12,9 @@ client = OpenAI(
   base_url='https://api.together.xyz/v1',
 )
 
-# Qwen/Qwen1.5-72B-Chat
 
 class Prompt(BaseModel):
     prompt: str
-    model: str
 
 
 @app.post("/response")
@@ -27,7 +22,7 @@ def get_response(prompt: Prompt):
   # Query the model with a prompt
   def query_togetherai(prompt_text):
       response = client.chat.completions.create(
-          model=prompt.model,
+          model="Qwen/Qwen1.5-72B-Chat",
           messages=[
               {"role": "system", "content": "You are a helpful assistant."},
               {"role": "user", "content": prompt_text},
