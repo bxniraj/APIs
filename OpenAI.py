@@ -7,9 +7,7 @@ import os
 
 app = FastAPI()
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"]) # ENTER YOUR API KEY HERE
-
-# gpt-3.5-turbo
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 class Prompt(BaseModel):
     prompt: str
