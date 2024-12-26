@@ -7,7 +7,7 @@ app = FastAPI()
 
 client = anthropic.Anthropic(
     # defaults to os.environ.get("ANTHROPIC_API_KEY")
-    api_key="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",
+    api_key="",
 
 )
 
